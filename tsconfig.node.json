@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.tsx",
+    "src/**/*",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.cy.ts",
+    "cypress/e2e/Auth.cy.ts",
+    "cypress/e2e/Auth.cy.ts",
+    "vite.config.ts"
+  ]
+}
