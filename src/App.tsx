@@ -8,7 +8,7 @@ function App() {
 
     return (
         <NextUIProvider>
-            <main className="purple-dark text-foreground bg-background">
+            <main className="">
                 <RouterProvider router={router} />
             </main>
         </NextUIProvider>

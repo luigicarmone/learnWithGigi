@@ -1,6 +1,8 @@
 import React from "react";
 import { useRouteError } from "react-router-dom";
 import {Button} from "@nextui-org/react";
+import {Box} from "@mui/system";
+import {Typography} from "@mui/material";
 
 
 export default function ErrorPage() {
@@ -9,25 +11,22 @@ export default function ErrorPage() {
 
   return (
       <>
-        <Button color="primary">
-          Buttona
-        </Button>
-        <div>
-          <div>
-            <h3 color='primary' style={{ fontWeight: "bold", margin: 5 }}>
+        <Box>
+          <Box>
+            <Typography variant="h3" sx={{ fontWeight: "bold", margin: 5 }}>
               Oops!
-            </h3>
-
-            <h1 style={{ fontStyle: "italic" }}>
+            </Typography>
+            <Typography variant="body1" sx={{ fontStyle: "italic" }}>
               Sorry, an unexpected error has occurred.
-            </h1>
-            <h1
-                style={{ fontStyle: "italic" }}
+            </Typography>
+            <Typography
+                variant="body1"
+                sx={{ fontStyle: "italic" }}
             >
               {error.statusText || error.message}
-            </h1>
-          </div>
-        </div>
+            </Typography>
+          </Box>
+        </Box>
       </>
 
   );
