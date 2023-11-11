@@ -3,6 +3,7 @@ import React from 'react';
 import ErrorPage from '../components/ErrorPage';
 import Home from '@presentation/container/Home';
 import LayoutMain from "@presentation/components/Layout/LayoutMain";
+import Contact from "@presentation/container/Contact";
 
 const routes = [
     {
@@ -14,6 +15,11 @@ const routes = [
                 path: '',
                 element: <Home />,
                 title: 'Home',
+            },
+            {
+                path: '/contact',
+                element: <Contact />,
+                title: 'Contact',
             },
         ],
     },
