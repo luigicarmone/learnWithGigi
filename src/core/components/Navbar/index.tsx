@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
 import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
-import ViewInArIcon from '@mui/icons-material/ViewInAr';
 import { Link as LinkReact } from "react-router-dom";
 import icons from "@infrastructure/constants/icon";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -69,18 +68,16 @@ export default function Appbar() {
 
             <NavbarContent className="sm:hidden pr-3" justify="center">
                 <NavbarBrand>
-                    <ViewInArIcon />
                     <LinkReact to={'/'}>
-                        <p className="font-bold text-inherit">learn with gigi</p>
+                        <img src={icons.Logo} alt='logo'/>
                     </LinkReact>
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-4">
                 <NavbarBrand>
-                    <ViewInArIcon />
-                    <LinkReact to={'/'} target="_blank">
-                        <p className="font-bold text-inherit">learn with gigi</p>
+                    <LinkReact to={'/'}>
+                        <img src={icons.Logo} className='w-52 h-52' alt='logo'/>
                     </LinkReact>
                 </NavbarBrand>
             </NavbarContent>
@@ -90,7 +87,7 @@ export default function Appbar() {
                     item.component === 'Contact me' ?
                                 <NavbarContent justify="end">
                                     <NavbarItem>
-                                        <LinkReact to={item.to} target="_blank">
+                                        <LinkReact to={item.to}>
                                             <Button as={Link} color="warning" variant="flat" >
                                                 {item.component}
                                             </Button>
@@ -102,7 +99,7 @@ export default function Appbar() {
                 <NavbarContent className="hidden sm:flex gap-4" justify="center">
                     <NavbarItem key={`${item.component}-${index}`}>
                             <Link color="foreground">
-                                    <LinkReact to={item.to} target="_blank">{item.component}</LinkReact>
+                                    <LinkReact to={item.to}>{item.component}</LinkReact>
                             </Link>
                         </NavbarItem>
                 </NavbarContent>

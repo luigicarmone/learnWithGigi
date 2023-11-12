@@ -1,10 +1,10 @@
 
 ![Logo](./src/core/assets/image/logo/learnWithGigi.png)
 
-# Threejs
+# 🌎 LEARN WITH GIGI
 
 Progetto per imparare threejs & altre tecnologie.
-## Avvia in locale
+## ⌨️ Avvia in locale 
 Clona il progetto in HTTPS
 
 ```bash
@@ -36,35 +36,35 @@ Starta il progetto
 ```
 
 
-## Caratteristiche
+## 📋 Caratteristiche
 
 - Light/dark mode toggle
 - Fullscreen mode
 - Responsive
 
 
-## Feedback
+## 📧 Feedback
 
 Se hai commenti, contattami all'email luigicarmone16@gmail.com
 
-## Tech Stack
+## ⚙️ Tech Stack
 
 **Client:** ThreeJS, React Three Fiber, React, TailwindCSS, Vite, Framer Motion, NextUI, 
 
 **Server:** Nulla al momento.
 
 
-## Screenshots
+## 📸 Screenshots
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
-## License
+## 🪪 License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
-## Autori
+## ✍🏻 Autori
 
 - [@luigicarmone](https://www.github.com/luigicarmone)
 
