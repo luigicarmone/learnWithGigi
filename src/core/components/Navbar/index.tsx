@@ -62,14 +62,14 @@ export default function Appbar() {
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
         >
-            <NavbarContent className="myTheme sm:hidden dark:text-white" justify="start">
-                <NavbarMenuToggle className="myTheme sm:hidden text-white" aria-component={isMenuOpen ? "Close menu" : "Open menu"} />
+            <NavbarContent className="myTheme sm:hidden" justify="start">
+                <NavbarMenuToggle className="myTheme sm:hidden dark:text-white light:text-black" aria-component={isMenuOpen ? "Close menu" : "Open menu"} />
             </NavbarContent>
 
             <NavbarContent className="sm:hidden pr-3" justify="center">
                 <NavbarBrand>
                     <LinkReact to={'/'}>
-                        <img src={icons.Logo} alt='logo'/>
+                        <img src={theme ==='dark' ? icons.LogoInvert : icons.Logo} className='w-52 hover:cursor-pointer' alt='logo'/>
                     </LinkReact>
                 </NavbarBrand>
             </NavbarContent>
@@ -77,7 +77,7 @@ export default function Appbar() {
             <NavbarContent className="hidden sm:flex gap-4">
                 <NavbarBrand>
                     <LinkReact to={'/'}>
-                        <img src={icons.Logo} className='w-52 h-52' alt='logo'/>
+                        <img src={theme ==='dark' ? icons.LogoInvert : icons.Logo} className='w-52 hover:cursor-pointer' alt='logo'/>
                     </LinkReact>
                 </NavbarBrand>
             </NavbarContent>

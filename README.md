@@ -1,5 +1,5 @@
 
-![Logo](./src/core/assets/image/logo/learnWithGigi.png)
+![Logo](./src/core/assets/image/logo/LogowhiteAsset.png)
 
 # 🌎 LEARN WITH GIGI
 
@@ -10,11 +10,11 @@ Clona il progetto in HTTPS
 ```bash
   git clone https://github.com/luigicarmone/threejs.git
 ```
-oppure SSH & Github CLI
+oppure SSH & GitHub CLI
 
 ```bash
   SSH: git clone git@github.com:luigicarmone/threejs.git
-  Github CLI: gh repo clone luigicarmone/threejs
+  GitHub CLI: gh repo clone luigicarmone/threejs
 ```
 
 Vai alla directory
