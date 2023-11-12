@@ -1,5 +1,5 @@
 
-![Logo](https://user-images.githubusercontent.com/5307958/38454395-eba34a8a-3a90-11e8-9c95-680a7aea037f.png)
+![Logo](./src/core/assets/image/logo/learnWithGigi.png)
 
 # Threejs
 
