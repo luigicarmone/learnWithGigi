@@ -4,13 +4,13 @@ import Props from "@core/components/Card/interface";
 
 
 export default function GenericCard(props: Props) {
-    const { children, cardHeader, cardFooter, styleBody} = props;
+    const { children, cardHeader, cardFooter, styleBody, styleCard} = props;
 
     return (
         <>
-            <Card>
+            <Card className={styleCard}>
                 {cardHeader ?
-                    <CardHeader>
+                    <CardHeader >
                         {cardHeader}
                     </CardHeader>
                 : null}

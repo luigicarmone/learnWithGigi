@@ -5,5 +5,6 @@ export default interface Props {
     cardHeader?: string;
     cardFooter?: React.ReactNode;
     styleBody?: string;
+    styleCard?: string;
 }
 

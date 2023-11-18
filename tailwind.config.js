@@ -12,6 +12,24 @@ module.exports = {
   plugins: [
     nextui({
       themes: {
+        light: {
+          colors: {
+            primary: {
+              50: "#eeeaea",
+              DEFAULT: "#484848",
+              100: '#d4d4d8',
+            },
+          },
+        },
+        dark: {
+          colors: {
+            primary: {
+              50: "#27272a",
+              DEFAULT: '#d4d4d8',
+              100: '#414144',
+            },
+          },
+        },
         "myTheme": {
           extend: "dark",
           colors: {
@@ -20,6 +38,7 @@ module.exports = {
             github: '#3f3d3d',
             linkedin: '#2d64bc',
             discord: '#5865F2',
+            light: '#E4E4E7FF',
           },
         },
       },

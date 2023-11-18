@@ -27,7 +27,7 @@ export default function Appbar() {
         {
             component: <FontAwesomeIcon
                             icon={icons.Github}
-                            className={'myTheme dark:text-white hover:text-github'}
+                            className={'myTheme dark:text-white:hover:text-github hover:text-github'}
                             style={{
                                 transition: 'color 0.3s',
                             }}
@@ -37,7 +37,7 @@ export default function Appbar() {
         {
             component: <FontAwesomeIcon
                             icon={icons.Discord}
-                            className={'myTheme dark:text-white hover:text-discord'}
+                            className={'myTheme dark:text-white:hover:text-discord hover:text-discord'}
                             style={{
                                 transition: 'color 0.3s',
                             }}
@@ -47,7 +47,7 @@ export default function Appbar() {
         {
             component: <FontAwesomeIcon
                             icon={icons.Linkedin}
-                            className={'myTheme dark:text-white hover:text-linkedin'}
+                            className={'myTheme dark:text-white:hover:text-linkedin hover:text-linkedin'}
                             style={{
                                 transition: 'color 0.3s',
                             }}
@@ -63,7 +63,7 @@ export default function Appbar() {
             onMenuOpenChange={setIsMenuOpen}
         >
             <NavbarContent className="myTheme sm:hidden" justify="start">
-                <NavbarMenuToggle className="myTheme sm:hidden dark:text-white light:text-black" aria-component={isMenuOpen ? "Close menu" : "Open menu"} />
+                <NavbarMenuToggle className="myTheme sm:hidden dark:text-white" aria-component={isMenuOpen ? "Close menu" : "Open menu"} />
             </NavbarContent>
 
             <NavbarContent className="sm:hidden pr-3" justify="center">
@@ -120,10 +120,11 @@ export default function Appbar() {
                 <FontAwesomeIcon
                     icon={iconToggleMode}
                     style={{
-                        color: theme === 'dark' ? '#fff' : '#000',
                         transition: 'color 0.3s',
                     }}
-                    size="xl" />
+                    className={'myTheme dark:text-white:hover:text-github hover:text-github'}
+                    size="xl"
+                />
             </button>
 
             <NavbarMenu>

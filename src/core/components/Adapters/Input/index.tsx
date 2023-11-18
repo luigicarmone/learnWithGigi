@@ -2,12 +2,12 @@ import React from 'react'
 import {Input, InputProps} from "@nextui-org/react";
 import { FieldRenderProps } from 'react-final-form';
 
-type CustomTextFieldProps = Omit<InputProps, 'name' | 'value' | 'onChange' | 'onBlur' | 'onFocus' | 'upperCase' | 'lowerCase'>;
+type CustomTextFieldProps = Omit<InputProps, 'name' | 'value' | 'onChange' | 'upperCase' | 'lowerCase'>;
 
 type InputWrapperProps = FieldRenderProps<string, HTMLElement> & CustomTextFieldProps;
 
 const InputWrapper: React.FC<InputWrapperProps> = ({ input, meta, ...rest }) => {
-    const { name, value, onChange, onBlur } = input;
+    const { name, value, onChange } = input;
     const { error, submitError, touched, modifiedSinceLastSubmit } = meta;
 
     const isUpperCase = rest.upperCase || false;
