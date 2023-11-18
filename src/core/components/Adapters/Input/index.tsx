@@ -38,13 +38,6 @@ const InputWrapper: React.FC<InputWrapperProps> = ({ input, meta, ...rest }) => 
                     rest.onChange(e);
                 }
             }}
-            onBlur={(e) => {
-                onBlur(e);
-
-                if (rest.onBlur) {
-                    rest.onBlur(e);
-                }
-            }}
         />
     )
 };
