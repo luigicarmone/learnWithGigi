@@ -1,4 +1,5 @@
 import { motion, useInView, useAnimation, Variant } from "framer-motion";
+import React from "react";
 import { useEffect, useRef } from "react";
 
 type AnimatedTextProps = {

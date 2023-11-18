@@ -18,7 +18,7 @@ export default function BackgroundAnimation() {
             <div className='area2'>
                 <div className='errorMessage'>
                     {Array.from({ length: 10 }).map((_, index) => (
-                        <p key={index} className='errorText text-white'>{error.statusText || error.message}</p>
+                        <p key={index} className='errorText text-white'>{error.statusText?.length > 10 || error.message?.length > 10 ? null : error.statusText || error.message}</p>
                     ))}
                 </div>
             </div>

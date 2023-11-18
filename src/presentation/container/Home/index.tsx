@@ -1,5 +1,6 @@
 import React from 'react'
 import FirstTry from "@core/components/threejs/firstTry";
+import {MailIcon} from "@core/assets/image/icon/mail";
 
 export default function Home() {
 

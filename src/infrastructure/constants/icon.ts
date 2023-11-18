@@ -5,7 +5,7 @@ import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import siteLogo from "@core/assets/image/logo/learnWithGigi.svg";
 import siteLogoInvert from "@core/assets/image/logo/learnWithGigiInvert.png";
-
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 const icons = {
     Discord: faDiscord,
@@ -15,6 +15,7 @@ const icons = {
     Moon: faMoon,
     Logo: siteLogo,
     LogoInvert: siteLogoInvert,
+    Email: faEnvelope,
 };
 
 export default icons;
