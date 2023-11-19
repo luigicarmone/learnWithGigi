@@ -1,9 +1,8 @@
-import React, {useState} from 'react'
-import GenericModal from "@core/components/Card/index";
+import React from 'react'
 import {Field, Form} from "react-final-form";
 import { Grid } from '@mui/material';
 import InputWrapper from "@core/components/Adapters/Input";
-import {Button, Card, CardBody, CardFooter, CardHeader, Input, Textarea} from '@nextui-org/react';
+import {Avatar, Image, Button, Card, CardBody, CardFooter, CardHeader} from '@nextui-org/react';
 import validatorRules from "@infrastructure/constants/validatorRules";
 import {validateField} from "@infrastructure/utils/form";
 import {MailIcon} from "@core/assets/image/icon/mail";
@@ -11,12 +10,35 @@ import {NameIcon} from "@core/assets/image/icon/name";
 import {NotesIcon} from "@core/assets/image/icon/notes";
 import {CompanyIcon} from "@core/assets/image/icon/company";
 import {Values} from "@presentation/container/Contact/interface";
+import {VideoIcon} from "@core/assets/image/icon/videocamera";
+import {PositionIcon} from "@core/assets/image/icon/position";
+import {EnvelopeIcon} from "@core/assets/image/icon/envelope";
+import icons from "@infrastructure/constants/icon";
+import {useTheme} from "next-themes";
+import { motion } from 'framer-motion';
 
 export default function Contact() {
     const debug = false;
+    const { theme, setTheme } = useTheme();
+
     const onSubmit = (values: Values) => {
         console.log(values);
     }
+
+    const iconsAvatar = [
+        {
+            label: 'luigicarmone16@gmail.com',
+            component: <EnvelopeIcon className="animate-pulse w-6 h-6 text-white" fill="currentColor" size={20} />,
+        },
+        {
+            label: 'Napoli',
+            component: <PositionIcon className="animate-pulse w-6 h-6 text-white" fill="currentColor" size={20} />,
+        },
+        {
+            label: 'Check my availabilities and book your meeting',
+            component: <VideoIcon className="animate-pulse w-6 h-6 text-white" fill="currentColor" size={20} />,
+        },
+    ]
 
     const validate = (values: Values) => {
         const errors = {};
@@ -29,17 +51,13 @@ export default function Contact() {
         return errors;
     };
 
+
     return (
         <>
-            <div className='bg-zinc-50 dark:bg-zinc-900' id='contactMe'>
-                <Card className='bg-zinc-50 dark:bg-zinc-900'>
-                    <CardHeader>
-                        <div className="flex flex-col">
-                            <h1 className="text-md">Let's partner up!</h1>
-                            <p className="text-small text-default-500">Together for a better solution.</p>
-                        </div>
-                    </CardHeader>
-                    <CardBody className='grid grid-cols-2'>
+            <div className='bg-zinc-50 dark:bg-zinc-900 flex flex-col items-center justify-center h-screen'>
+                <Card className='bg-zinc-50 dark:bg-zinc-900 w-3/4 h-auto'>
+
+                    <CardBody className='md:grid md:grid-cols-2'>
                         <Form
                             onSubmit={onSubmit}
                             // initialValues={initialValues}
@@ -53,7 +71,12 @@ export default function Contact() {
                             render={({ handleSubmit, form, submitting, pristine, values }) => (
                                 <form onSubmit={handleSubmit} noValidate>
                                     <Grid container alignItems="flex-start" spacing={3}>
-
+                                        <CardHeader>
+                                            <div className="flex flex-col">
+                                                <h1 className="text-md mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Let's partner up!</h1>
+                                                <p className="text-small text-default-500">Together for a better solution.</p>
+                                            </div>
+                                        </CardHeader>
                                         <Grid item xs={12} md={12} xl={12} lg={12}>
                                             <Field name="name" component={InputWrapper} label="Nome" color="primary" isClearable isRequired
                                                    startContent={
@@ -115,10 +138,35 @@ export default function Contact() {
                                 </form>
                             )}
                         />
+                        <div className='hidden md:block h-full ml-10 bg-yellow-400 rounded-2xl dark:bg-violet-900'>
+                            <h2 className="ml-2 mt-2 mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Contacts</h2>
+                            {iconsAvatar.map((item) => (
+                                <div className='flex flex-auto'>
+                                    <Avatar
+                                        icon={item.component}
+                                        classNames={{
+                                            base: "bg-gradient-to-br from-[#FFB457] to-[#FF705B]",
+                                            icon: "text-black/80",
+
+                                        }}
+                                        className='ml-2 mb-5'
+                                    />
+                                    <span className="ml-4 mt-2 ms-1 text-sm font-medium text-gray-900 md:ms-2 dark:text-gray-400">{item.label}</span>
+                                </div>
+                            ))}
+                            <Image
+                                width={300}
+                                height={200}
+                                alt="Message me"
+                                src={theme ==='dark' ? icons.MessageYellow : icons.MessagePurple}
+                                className='justify-center'
+                            />
+                        </div>
                     </CardBody>
                     <CardFooter />
                 </Card>
             </div>
+
         </>
     )
 }
