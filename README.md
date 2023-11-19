@@ -8,19 +8,19 @@ Progetto per imparare threejs & altre tecnologie.
 Clona il progetto in HTTPS
 
 ```bash
-  git clone https://github.com/luigicarmone/threejs.git
+  git clone https://github.com/luigicarmone/learnWithGigi.git
 ```
 oppure SSH & GitHub CLI
 
 ```bash
-  SSH: git clone git@github.com:luigicarmone/threejs.git
-  GitHub CLI: gh repo clone luigicarmone/threejs
+  SSH: git clone git@github.com:luigicarmone/learnWithGigi.git
+  GitHub CLI: gh repo clone luigicarmone/learnWithGigi
 ```
 
 Vai alla directory
 
 ```bash
-  cd threejs
+  cd learnWithGigi
 ```
 
 Installa le dipendenze
