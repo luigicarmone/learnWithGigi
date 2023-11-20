@@ -15,11 +15,44 @@ import {PositionIcon} from "@core/assets/image/icon/position";
 import {EnvelopeIcon} from "@core/assets/image/icon/envelope";
 import icons from "@infrastructure/constants/icon";
 import {useTheme} from "next-themes";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import AnimText from "@core/components/AnimatedText/Text Typing/AnimText";
+
+const containerVariants = {
+    hidden: {
+        opacity: 0,
+        y: 30
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.3,
+            ease: "easeOut",
+            delayChildren: 0.3,
+            staggerChildren: 0.1
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: {
+        opacity: 0,
+        y: 15
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.3,
+            ease: "easeOut"
+        }
+    }
+};
 
 export default function Contact() {
     const debug = false;
-    const { theme, setTheme } = useTheme();
+    const { theme} = useTheme();
 
     const onSubmit = (values: Values) => {
         console.log(values);
@@ -73,7 +106,22 @@ export default function Contact() {
                                     <Grid container alignItems="flex-start" spacing={3}>
                                         <CardHeader>
                                             <div className="flex flex-col">
-                                                <h1 className="text-md mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Let's partner up!</h1>
+                                                {/*<h1 className="text-md mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Let's partner up!</h1>*/}
+                                                <motion.div>
+                                                    <motion.div
+                                                        variants={containerVariants}
+                                                        animate="visible"
+                                                        initial="hidden"
+                                                        className='text-md mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white'
+                                                    >
+                                                        <motion.span
+                                                            variants={itemVariants}
+                                                            className=""
+                                                        >
+                                                            <AnimText delay={1} />
+                                                        </motion.span>
+                                                    </motion.div>
+                                                </motion.div>
                                                 <p className="text-small text-default-500">Together for a better solution.</p>
                                             </div>
                                         </CardHeader>
