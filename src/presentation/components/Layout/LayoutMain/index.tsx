@@ -7,10 +7,8 @@ const LayoutMain = () => {
 
   return (
     <>
-        <Box>
             <Appbar />
             <Outlet />
-        </Box>
     </>
   );
 }

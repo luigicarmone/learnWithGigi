@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouteError } from "react-router-dom";
 import Appbar from "@core/components/Navbar";
-import { AnimatedText } from "@core/components/AnimatedText";
+import { AnimatedText } from "@core/components/AnimatedText/Basic";
 import BackgroundAnimation from "@core/components/ErrorPage/Background";
 
 export default function ErrorPage() {

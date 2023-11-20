@@ -11,7 +11,7 @@ function App() {
     return (
         <NextUIProvider>
             <NextThemesProvider attribute="class" defaultTheme="dark">
-            <main className="">
+            <main className="h-screen">
                 <RouterProvider router={router} />
             </main>
             </NextThemesProvider>
