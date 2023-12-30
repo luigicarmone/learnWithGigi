@@ -1,9 +1,10 @@
 import React from 'react'
 import FirstTry from "@core/components/threejs/firstTry";
-import {MailIcon} from "@core/assets/image/icon/mail";
+import {useTranslate} from "@tolgee/react";
 
 export default function Home() {
 
+    const {t} = useTranslate();
     return (
         <>
             <h1>Home</h1>

@@ -4,8 +4,11 @@ import { Link as LinkReact } from "react-router-dom";
 import icons from "@infrastructure/constants/icon";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useTheme} from "next-themes";
+import {useTranslate} from "@tolgee/react";
+import LanguageSelector from "@core/components/LanguageSelector";
 
 export default function Appbar() {
+    const { t } = useTranslate();
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const { theme, setTheme } = useTheme();
     const iconToggleMode = theme ==='dark' ? icons.Sun : icons.Moon
@@ -16,17 +19,20 @@ export default function Appbar() {
             to: ''
         },
         {
-            component: 'Other Projects',
+            component: t('tr_otherProjects'),
             to: '/otherprojects'
         },
 
         {
-            component: 'Contact me',
+            component: t('tr_contact'),
             to: '/contact'
         },
         {
+            label: 'Github',
             component: <FontAwesomeIcon
                             icon={icons.Github}
+                            width={30}
+                            height={30}
                             className={'myTheme dark:text-white:hover:text-github hover:text-github'}
                             style={{
                                 transition: 'color 0.3s',
@@ -35,8 +41,11 @@ export default function Appbar() {
             to: 'https://github.com/luigicarmone',
         },
         {
+            label: 'Discord',
             component: <FontAwesomeIcon
                             icon={icons.Discord}
+                            width={30}
+                            height={30}
                             className={'myTheme dark:text-white:hover:text-discord hover:text-discord'}
                             style={{
                                 transition: 'color 0.3s',
@@ -45,8 +54,11 @@ export default function Appbar() {
             to: 'https://discord.com/users/luigicarmone',
         },
         {
+            label: 'Linkedin',
             component: <FontAwesomeIcon
                             icon={icons.Linkedin}
+                            width={30}
+                            height={30}
                             className={'myTheme dark:text-white:hover:text-linkedin hover:text-linkedin'}
                             style={{
                                 transition: 'color 0.3s',
@@ -54,6 +66,7 @@ export default function Appbar() {
                             size="xl" />,
             to: 'https://www.linkedin.com/in/luigi-carmone',
         },
+
     ]
 
     return (
@@ -85,7 +98,7 @@ export default function Appbar() {
 
             {menuItems.map((item, index) => (
 
-                    item.component === 'Contact me' ?
+                    item.component === t('tr_contact') ?
                         <>
                             <NavbarContent justify="end">
                                 <NavbarItem key={`${item.component}-${index}`}>
@@ -116,6 +129,7 @@ export default function Appbar() {
                 </NavbarContent>
                 ))}
 
+            <LanguageSelector />
             <button onClick={() => theme ==='dark' ? setTheme('light') : setTheme('dark')}>
                 <FontAwesomeIcon
                     icon={iconToggleMode}
@@ -127,19 +141,38 @@ export default function Appbar() {
                 />
             </button>
 
+
+
             <NavbarMenu>
                 {menuItems.map((item, index) => (
-                    <NavbarMenuItem key={`${item.component}-${index}`}>
-                        <Link
-                            className="w-full"
-                            color={
-                                item.component === 'Contact me' ? "warning" : "foreground"
-                            }
-                            size="lg"
-                        >
-                            <LinkReact to={item.to}>{item.component}</LinkReact>
-                        </Link>
-                    </NavbarMenuItem>
+                    typeof item.component !== 'string' ?
+                        <LinkReact to={item.to} target="_blank">
+                            <NavbarMenuItem key={`${item.component}-${index}`}>
+                                <Link
+                                    className="w-full"
+                                    color={
+                                        item.component === t('tr_contact') ? "warning" : "foreground"
+                                    }
+                                    size="lg"
+                                >
+                                    {item.component}<span style={{marginLeft: 20}}>{item?.label}</span>
+                                </Link>
+                            </NavbarMenuItem>
+                        </LinkReact>
+                        :
+                        <LinkReact to={item.to}>
+                            <NavbarMenuItem key={`${item.component}-${index}`}>
+                                <Link
+                                    className="w-full"
+                                    color={
+                                        item.component === t('tr_contact') ? "warning" : "foreground"
+                                    }
+                                    size="lg"
+                                >
+                                    {item.component}<span style={{marginLeft: 20}}>{item?.label}</span>
+                                </Link>
+                            </NavbarMenuItem>
+                        </LinkReact>
                 ))}
             </NavbarMenu>
         </Navbar>

@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Field, Form} from "react-final-form";
 import { Grid } from '@mui/material';
 import InputWrapper from "@core/components/Adapters/Input";
 import {Avatar, Image, Button, Card, CardBody, CardFooter, CardHeader} from '@nextui-org/react';
 import validatorRules from "@infrastructure/constants/validatorRules";
-import {validateField} from "@infrastructure/utils/form";
+import useFieldValidator from "@infrastructure/utils/form/index";
 import {MailIcon} from "@core/assets/image/icon/mail";
 import {NameIcon} from "@core/assets/image/icon/name";
 import {NotesIcon} from "@core/assets/image/icon/notes";
@@ -17,6 +17,10 @@ import icons from "@infrastructure/constants/icon";
 import {useTheme} from "next-themes";
 import { motion } from "framer-motion";
 import AnimText from "@core/components/AnimatedText/Text Typing/AnimText";
+import TextareaWrapper from "@core/components/Adapters/Textarea";
+import {useContactMe} from "@infrastructure/hooks/useContactMe";
+import {useQueryClient} from "@tanstack/react-query";
+import {useTranslate} from "@tolgee/react";
 
 const containerVariants = {
     hidden: {
@@ -50,36 +54,56 @@ const itemVariants = {
     }
 };
 
+const initialContactValues = {
+        name: '',
+        email: '',
+        company: '',
+        note: ''
+}
+
 export default function Contact() {
+    const {t} = useTranslate();
+    const validateField = useFieldValidator();
     const debug = false;
     const { theme} = useTheme();
+    const [contactData, setContactData] = useState<{name: string; email: string; company: string; note: string;}>(initialContactValues);
+    const { data: contactsData, isLoading: contactLoading } = useContactMe({
+        name: contactData.name,
+        email: contactData.email,
+        company: contactData.company,
+        note: contactData.note,
+    });
+    const queryClient = useQueryClient()
 
     const onSubmit = (values: Values) => {
-        console.log(values);
+        setContactData(values);
     }
 
     const iconsAvatar = [
         {
             label: 'luigicarmone16@gmail.com',
-            component: <EnvelopeIcon className="animate-pulse w-6 h-6 text-white" fill="currentColor" size={20} />,
+            component: <EnvelopeIcon className="animate-pulse w-6 h-6 text-white" fill="currentColor" size={20}
+                                     height={20} width={20} />,
         },
         {
-            label: 'Napoli',
-            component: <PositionIcon className="animate-pulse w-6 h-6 text-white" fill="currentColor" size={20} />,
+            label: t('tr_naples'),
+            component: <PositionIcon className="animate-pulse w-6 h-6 text-white" fill="currentColor" size={20}
+                                     height={20} width={20} />,
         },
         {
-            label: 'Check my availabilities and book your meeting',
-            component: <VideoIcon className="animate-pulse w-6 h-6 text-white" fill="currentColor" size={20} />,
+            label: t('tr_availabilities'),
+            component: <VideoIcon className="animate-pulse w-6 h-6 text-white" fill="currentColor" size={20}
+                                  height={20} width={20} />,
         },
     ]
 
     const validate = (values: Values) => {
         const errors = {};
 
-        validateField(errors, values, 'name', 'nome', validatorRules.name);
+        validateField(errors, values, 'name', t('tr_name'), validatorRules.name);
         validateField(errors, values,'email', 'email', validatorRules.emailRequired);
-        // validateField(errors, values,'company', 'azienda', validatorRules.name);
-        // validateField(errors, values,'note', 'altro', null);
+        // validateField(errors, values,'company', t('tr_company'), validatorRules.name);
+        // validateField(errors, values,'note', t('tr_other'), null);
 
         return errors;
     };
@@ -105,7 +129,7 @@ export default function Contact() {
                                 <form onSubmit={handleSubmit} noValidate>
                                     <Grid container alignItems="flex-start" spacing={3}>
                                         <CardHeader>
-                                            <div className="flex flex-col">
+                                            <div className="ml-4 flex flex-col">
                                                 {/*<h1 className="text-md mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Let's partner up!</h1>*/}
                                                 <motion.div>
                                                     <motion.div
@@ -122,11 +146,11 @@ export default function Contact() {
                                                         </motion.span>
                                                     </motion.div>
                                                 </motion.div>
-                                                <p className="text-small text-default-500">Together for a better solution.</p>
+                                                <p className="text-small text-default-500">{t('tr_slogan')}</p>
                                             </div>
                                         </CardHeader>
                                         <Grid item xs={12} md={12} xl={12} lg={12}>
-                                            <Field name="name" component={InputWrapper} label="Nome" color="primary" isClearable isRequired
+                                            <Field name="name" component={InputWrapper} label={t('tr_name')} color="primary" isClearable isRequired
                                                    startContent={
                                                        <NameIcon className="text-large text-default-400 pointer-events-none flex-shrink-0" />
                                                    }
@@ -142,7 +166,7 @@ export default function Contact() {
                                             />
                                         </Grid>
                                         <Grid item xs={12} md={12} xl={12} lg={12}>
-                                            <Field name="company" component={InputWrapper} isClearable color="primary" label="Azienda"
+                                            <Field name="company" component={InputWrapper} isClearable color="primary" label={t('tr_company')}
                                                    startContent={
                                                        <CompanyIcon className="text-large text-default-400 pointer-events-none flex-shrink-0" />
                                                    }
@@ -151,7 +175,7 @@ export default function Contact() {
                                         </Grid>
 
                                         <Grid item xs={12} md={12} xl={12} lg={12}>
-                                            <Field name="note" component={InputWrapper} isClearable label="Altro" color="primary" onClear={() => form.mutators.setClear('note')}
+                                            <Field name="note" component={TextareaWrapper} isClearable label={t('tr_other')} color="primary" onClear={() => form.mutators.setClear('note')}
                                                    startContent={
                                                        <NotesIcon className="text-large text-default-400 pointer-events-none flex-shrink-0" />
                                                    }
@@ -165,7 +189,7 @@ export default function Contact() {
                                                 type="submit"
                                                 isDisabled={submitting}
                                             >
-                                                Invia
+                                                {t('tr_send')}
                                             </Button>
                                         </Grid>
                                         <Grid item >
@@ -176,7 +200,7 @@ export default function Contact() {
                                                 onClick={() => form.reset()}
                                                 isDisabled={submitting || pristine}
                                             >
-                                                Resetta
+                                                {t('tr_reset')}
                                             </Button>
                                         </Grid>
                                     </Grid>
@@ -187,7 +211,7 @@ export default function Contact() {
                             )}
                         />
                         <div className='hidden md:block h-full ml-10 bg-yellow-400 rounded-2xl dark:bg-violet-900'>
-                            <h2 className="ml-2 mt-2 mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Contacts</h2>
+                            <h2 className="ml-2 mt-2 mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">{t('tr_contacts')}</h2>
                             {iconsAvatar.map((item) => (
                                 <div className='flex flex-auto'>
                                     <Avatar
