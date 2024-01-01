@@ -26,5 +26,7 @@
   "tr_contactText6": "Intéressé par une collaboration ?",
   "tr_contactText7": "Junissons nos efforts !",
   "tr_contactText8": "Que diriez-vous d'un partenariat ?",
-  "tr_contactText9": "Faisons équipe pour réussir !"
+  "tr_contactText9": "Faisons équipe pour réussir !",
+  "tr_messageSend": "Message envoyé avec succès !",
+  "tr_errorMessageSend": "Erreur lors de l'envoi du message."
 }

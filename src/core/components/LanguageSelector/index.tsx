@@ -44,7 +44,7 @@ export default function LanguageSelector() {
                             }}
                             aria-label={t(`${currentLanguage.label}`)}
                         />
-                        <span style={{ marginLeft: 15 }}>{t(`${currentLanguage.label}`)}</span>
+                        <span style={{ marginLeft: 15 }} className="hidden sm:inline">{t(`${currentLanguage.label}`)}</span>
                     </div>
                 </Button>
             </DropdownTrigger>

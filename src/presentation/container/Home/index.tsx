@@ -1,6 +1,7 @@
 import React from 'react'
 import FirstTry from "@core/components/threejs/firstTry";
 import {useTranslate} from "@tolgee/react";
+import toast from "react-hot-toast";
 
 export default function Home() {
 

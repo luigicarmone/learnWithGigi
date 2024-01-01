@@ -51,7 +51,7 @@ Se hai commenti, contattami all'email luigicarmone16@gmail.com
 
 **Client:** ThreeJS, React Three Fiber, React, TailwindCSS, Vite, Framer Motion, NextUI, 
 
-**Server:** Nulla al momento.
+**Server:** Symfony.
 
 
 ## 📸 Screenshots

@@ -8,6 +8,7 @@ export default defineConfig({
   server: {
     port: 4000,
     open: true,
+    host: 'lwg.local',
   },
   plugins: [svgr(), react()],
   resolve: {

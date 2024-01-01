@@ -1,3 +1,6 @@
-import Contact from "@core/entities/Contact/Contact";
 
-export default interface PutContactMeResponseAPI extends Contact {}
+export default interface PutContactMeResponseAPI {
+    message?: string;
+    code?: number;
+    data?: object;
+}

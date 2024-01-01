@@ -1,9 +1,9 @@
 {
-  "tr_italian": "italiano",
-  "tr_english": "inglés",
-  "tr_spanish": "español",
-  "tr_french": "francés",
-  "tr_hello": "hola",
+  "tr_italian": "Italiano",
+  "tr_english": "Inglés",
+  "tr_spanish": "Español",
+  "tr_french": "Francés",
+  "tr_hello": "Hola",
   "tr_contact": "Contáctame",
   "tr_errorPage": "Lo sentimos, ha ocurrido un error inesperado.",
   "tr_otherProjects": "Otros proyectos",
@@ -26,5 +26,7 @@
   "tr_contactText6": "¿Interesado en colaborar?",
   "tr_contactText7": "¡Unamos esfuerzos!",
   "tr_contactText8": "¿Qué tal asociarnos?",
-  "tr_contactText9": "¡Hagamos equipo para lograr el éxito!"
+  "tr_contactText9": "¡Hagamos equipo para lograr el éxito!",
+  "tr_messageSend": "¡Mensaje enviado exitosamente!",
+  "tr_errorMessageSend": "Error al enviar el mensaje."
 }

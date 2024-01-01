@@ -19,8 +19,8 @@ import { motion } from "framer-motion";
 import AnimText from "@core/components/AnimatedText/Text Typing/AnimText";
 import TextareaWrapper from "@core/components/Adapters/Textarea";
 import {useContactMe} from "@infrastructure/hooks/useContactMe";
-import {useQueryClient} from "@tanstack/react-query";
 import {useTranslate} from "@tolgee/react";
+import {feedbackNotification} from "@infrastructure/utils/global";
 
 const containerVariants = {
     hidden: {
@@ -54,29 +54,34 @@ const itemVariants = {
     }
 };
 
-const initialContactValues = {
-        name: '',
-        email: '',
-        company: '',
-        note: ''
-}
-
 export default function Contact() {
     const {t} = useTranslate();
     const validateField = useFieldValidator();
     const debug = false;
     const { theme} = useTheme();
-    const [contactData, setContactData] = useState<{name: string; email: string; company: string; note: string;}>(initialContactValues);
-    const { data: contactsData, isLoading: contactLoading } = useContactMe({
-        name: contactData.name,
-        email: contactData.email,
-        company: contactData.company,
-        note: contactData.note,
-    });
-    const queryClient = useQueryClient()
+    const {mutateAsync: contactsData, isLoading: contactLoading, isError} = useContactMe()
 
-    const onSubmit = (values: Values) => {
-        setContactData(values);
+    async function onSubmit (values: Values){
+        const response = await contactsData({
+            name: values.name,
+            email: values.email,
+            company: values?.company,
+            note: values?.note,
+        })
+    if(response && response?.code === 400) {
+        feedbackNotification({
+            code: 400,
+            message: t(
+                'tr_errorMessageSend'
+            ),
+        });
+    }
+    feedbackNotification({
+            code: 200,
+            message: t(
+                'tr_messageSend'
+            ),
+        });
     }
 
     const iconsAvatar = [
@@ -109,12 +114,13 @@ export default function Contact() {
     };
 
 
+
     return (
         <>
             <div className='bg-zinc-50 dark:bg-zinc-900 flex flex-col items-center justify-center h-screen'>
                 <Card className='bg-zinc-50 dark:bg-zinc-900 w-3/4 h-auto'>
-
                     <CardBody className='md:grid md:grid-cols-2'>
+
                         <Form
                             onSubmit={onSubmit}
                             // initialValues={initialValues}

@@ -6,6 +6,7 @@ import '@core/index.css'
 import {ThemeProvider as NextThemesProvider} from "next-themes";
 import {QueryClientProvider} from "@tanstack/react-query";
 import {queryClient} from "@core/config";
+import {Toaster} from "react-hot-toast";
 
 const router = createBrowserRouter(routes)
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <NextUIProvider>
                 <NextThemesProvider attribute="class" defaultTheme="dark">
                         <main className="h-screen">
+                            <Toaster />
                         <RouterProvider router={router} />
                         </main>
                 </NextThemesProvider>
